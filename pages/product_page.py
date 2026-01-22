@@ -20,17 +20,16 @@ class ProductPage(BasePage):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
             "Success message is presented, but should not be"
 
-    def find_product_name(self):
-        return self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
 
-    def find_product_price(self):
-        return self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+    def check_product_name_after_adding_item_to_basket(self):
+        assert (self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text ==
+         self.browser.find_element(*ProductPageLocators.ADDED_PRODUCT_NAME).text), \
+        "product name doesn't match added product name"
 
-    def find_added_product_name(self):
-        return self.browser.find_element(*ProductPageLocators.ADDED_PRODUCT_NAME).text
-
-    def find_added_product_price(self):
-        return self.browser.find_element(*ProductPageLocators.ADDED_PRODUCT_PRICE).text
+    def check_product_price_after_adding_item_to_basket(self):
+        assert (self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text ==
+         self.browser.find_element(*ProductPageLocators.ADDED_PRODUCT_PRICE).text), \
+        "product price doesn't match added product name"
 
     def success_message_is_disappeared(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
