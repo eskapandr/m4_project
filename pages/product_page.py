@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+from .locators import BasePageLocators
 
 class ProductPage(BasePage):
 
@@ -10,6 +11,10 @@ class ProductPage(BasePage):
     def add_item_to_basket(self):
         add_button = self.browser.find_element(*ProductPageLocators.ADD_BUTTON)
         add_button.click()
+
+    def go_to_basket(self):
+        link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        link.click()
 
     def success_message_is_not_presented(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
