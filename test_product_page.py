@@ -88,7 +88,7 @@ class TestUserAddToBasketFromProductPage():
         page = ProductPage(browser, link)
         page.open()
         page.add_item_to_basket()
-        page.solve_quiz_and_get_code()
+        #page.solve_quiz_and_get_code()
         time.sleep(5)
         page.check_product_name_after_adding_item_to_basket
         page.check_product_price_after_adding_item_to_basket
